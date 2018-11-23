@@ -8,13 +8,15 @@ namespace CS.Hello
 
             // prepare loggers
             var log1 = new Logger();
-            var log2 = new Logger();
-            var log3 = new Logger();
-
             log1.AddScreen();
-            log1.AddFile(@"C:\temp\CS.log");
-            log2.AddFile(@"C:\temp\CS.log");
+            log1.AddFile("C:\\temp\\CSharp1.log");
+            log1.SetAutoRotate(500);
+
+            var log2 = new Logger("C:\\temp\\CSharp2.log",200);
+
+            var log3 = new Logger();
             log3.AddScreen();
+
 
             // main code
             // Console.WriteLine("Hello World!");
@@ -24,6 +26,8 @@ namespace CS.Hello
             log3.WriteLine("This goes to screen only");
             log3.WriteLine("This has extended timestamp","G");
 
+            // finish
+            log1.Rotate(200);
         }
     }
 
