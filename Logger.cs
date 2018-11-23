@@ -69,6 +69,7 @@ class Logger {
     //
 
     public void Rotate(int MaxSize = 1000000) {
+        
         if (this.FileName == null)
             return;
 
@@ -79,7 +80,7 @@ class Logger {
         if (fileInfo.Length < MaxSize)
             return;
 
-        var rotatedPath = this.FileName + "." + DateTime.Now.ToString("yyyy-MM-dd-hhmmss");;
+        var rotatedPath = this.FileName + DateTime.Now.ToString(".yyyy-MM-dd-hhmmss");;
         File.Move(this.FileName, rotatedPath);
         File.Create(this.FileName);
 
