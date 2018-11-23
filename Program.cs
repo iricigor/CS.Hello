@@ -5,9 +5,7 @@ namespace CS.Hello
     class Program {
         static void Main(string[] args) {
 
-            // Console.WriteLine("Hello World!");
-
-            // prepare logger
+            // prepare loggers
             var log1 = new Logger();
             var log2 = new Logger();
             var log3 = new Logger();
@@ -18,6 +16,7 @@ namespace CS.Hello
             log3.AddScreen();
 
             // main code
+            // Console.WriteLine("Hello World!");
             log1.WriteLine("Hello world from logger!");
             log2.WriteLine("This goes to file only");
             log3.WriteLine("This goes to screen only");
@@ -25,11 +24,21 @@ namespace CS.Hello
         }
     }
 
+
     class Logger {
+
+
+        //
+        // properties
+        //
 
         private string FileName;
         private bool Screen = false;
 
+
+        //
+        // configuration methods
+        //
 
         public void AddFile(string FileName) {
             this.FileName = FileName;
@@ -39,15 +48,20 @@ namespace CS.Hello
             this.Screen = true;
         }
 
+
+        //
+        // main write method
+        //
+
         public void WriteLine(string Message) {
             
+            string ExtendedMessage = DateTime.Now.ToString("T") + " " + Message;
+
             if (this.Screen) {
-                Console.WriteLine(Message);
+                Console.WriteLine(ExtendedMessage);
             }
 
             if (this.FileName != null) {
-                // TODO: Add file locking
-                string ExtendedMessage = DateTime.Now.ToString("T") + " " + Message;
                 var logWriter = new System.IO.StreamWriter(this.FileName, append: true);
                 logWriter.WriteLine(ExtendedMessage);
                 logWriter.Dispose();
