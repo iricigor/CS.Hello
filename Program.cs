@@ -20,7 +20,9 @@ namespace CS.Hello
             // Console.WriteLine("Hello World!");
             log1.WriteLine("Hello world from logger!");
             log2.WriteLine("This goes to file only");
+            
             log3.WriteLine("This goes to screen only");
+            log3.WriteLine("This has extended timestamp","G");
 
         }
     }

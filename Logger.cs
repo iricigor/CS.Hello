@@ -28,9 +28,9 @@ class Logger {
     // main write method
     //
 
-    public void WriteLine(string Message) {
+    public void WriteLine(string Message, string TimeStampFormat = "T") {
         
-        string ExtendedMessage = DateTime.Now.ToString("T") + " " + Message;
+        string ExtendedMessage = DateTime.Now.ToString(TimeStampFormat) + " " + Message;
 
         if (this.Screen) {
             Console.WriteLine(ExtendedMessage);
